@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListLayoutStrategy: LayoutStrategy {
+final class ListLayoutStrategy: LayoutStrategy {
 
     var layout: UICollectionViewLayout {
         return ListFlowLayout()

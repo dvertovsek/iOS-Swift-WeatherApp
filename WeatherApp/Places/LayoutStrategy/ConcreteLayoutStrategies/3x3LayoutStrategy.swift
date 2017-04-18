@@ -8,7 +8,7 @@
 
 import UIKit
 
-class _3x3LayoutStrategy: LayoutStrategy {
+final class _3x3LayoutStrategy: LayoutStrategy {
 
     var layout: UICollectionViewLayout
     {

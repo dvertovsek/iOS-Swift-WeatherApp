@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PageLayoutStrategy: LayoutStrategy {
+final class PageLayoutStrategy: LayoutStrategy {
 
     var layout: UICollectionViewLayout {
         return PageFlowLayout()
