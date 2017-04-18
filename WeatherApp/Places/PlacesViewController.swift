@@ -15,7 +15,13 @@ class PlacesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var toggleDisplayModeButton: UIBarButtonItem!
 
-    var layoutStrategy: LayoutStrategy = _3x3LayoutStrategy()
+    //ListLayoutInfo
+    @IBOutlet weak var bottomInfo: UIStackView!
+    @IBOutlet weak var degreesLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var weatherIcon: UIImageView!
+
+    lazy var layoutState: LayoutState = ListState(context: self)
 
     let dataManager = DataManager()
 
@@ -24,7 +30,7 @@ class PlacesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.collectionViewLayout = layoutStrategy.layout
+        collectionView.collectionViewLayout = layoutState.layoutStrategy.layout
 
         places = dataManager.getMyPlaces()
 
@@ -50,22 +56,22 @@ class PlacesViewController: UIViewController {
     func animateLayoutChange() {
         UIView.animate(withDuration: 0.5) {
             self.collectionView.collectionViewLayout.invalidateLayout()
-            self.collectionView.setCollectionViewLayout(self.layoutStrategy.layout, animated: true)
+            self.collectionView.setCollectionViewLayout(self.layoutState.layoutStrategy.layout, animated: true)
         }
     }
 
     @IBAction func toggleCollectionLayout() {
-        layoutStrategy = _3x3LayoutStrategy()
+        layoutState = _3x3State()
         animateLayoutChange()
     }
 
     @IBAction func toggleListLayout() {
-        layoutStrategy = ListLayoutStrategy()
+        layoutState = ListState(context: self)
         animateLayoutChange()
     }
 
     @IBAction func togglePageLayout() {
-        layoutStrategy = PageLayoutStrategy()
+//        layoutStrategy = PageLayoutStrategy()
         animateLayoutChange()
     }
 
@@ -110,4 +116,12 @@ extension PlacesViewController: UICollectionViewDataSource {
 }
 
 extension PlacesViewController: UICollectionViewDelegate {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath)
+    {
+        layoutState.handleCellSelection(for: indexPath)
+    }
+
 }
