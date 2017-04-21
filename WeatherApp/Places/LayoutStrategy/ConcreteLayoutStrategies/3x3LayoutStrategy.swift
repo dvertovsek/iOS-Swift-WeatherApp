@@ -21,8 +21,7 @@ fileprivate class _3x3FlowLayout: UICollectionViewFlowLayout {
 
     let numberOfItemsInRow: CGFloat = 3
 
-    override func prepare() {
-        super.prepare()
+    override func prepareForTransition(from oldLayout: UICollectionViewLayout) {
         scrollDirection = .vertical
         minimumInteritemSpacing = 1
         minimumLineSpacing = 1

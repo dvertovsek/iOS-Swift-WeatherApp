@@ -18,8 +18,7 @@ final class ListLayoutStrategy: LayoutStrategy {
 
 fileprivate class ListFlowLayout: UICollectionViewFlowLayout {
 
-    override func prepare() {
-        super.prepare()
+    override func prepareForTransition(from oldLayout: UICollectionViewLayout) {
         scrollDirection = .vertical
         minimumInteritemSpacing = 1
         minimumLineSpacing = 1

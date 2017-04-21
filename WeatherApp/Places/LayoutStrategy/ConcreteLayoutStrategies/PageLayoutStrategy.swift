@@ -18,8 +18,7 @@ final class PageLayoutStrategy: LayoutStrategy {
 
 fileprivate class PageFlowLayout: UICollectionViewFlowLayout {
 
-    override func prepare() {
-        super.prepare()
+    override func prepareForTransition(from oldLayout: UICollectionViewLayout) {
         scrollDirection = .horizontal
         minimumLineSpacing = 0
         minimumInteritemSpacing = 0

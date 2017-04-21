@@ -71,7 +71,7 @@ class PlacesViewController: UIViewController {
     }
 
     @IBAction func togglePageLayout() {
-//        layoutStrategy = PageLayoutStrategy()
+        layoutState = PageState()
         animateLayoutChange()
     }
 
