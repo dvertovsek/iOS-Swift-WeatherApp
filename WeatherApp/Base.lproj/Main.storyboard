@@ -83,7 +83,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ULU-nK-fPJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="504"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MKD-ts-Izg">
                                             <size key="itemSize" width="113" height="103"/>
@@ -144,43 +144,6 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="PY1-28-bPP"/>
                                         </connections>
                                     </collectionView>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="w4n-4a-OTv">
-                                        <rect key="frame" x="0.0" y="504" width="375" height="50"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2uk-u5-q0p">
-                                                <rect key="frame" x="8" y="0.0" width="367" height="50"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="izV-ne-ZR0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="301" height="50"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gj0-Ic-gBG">
-                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knF-IF-9Y0">
-                                                                <rect key="frame" x="56" y="0.0" width="245" height="50"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UwT-5Q-Jch">
-                                                        <rect key="frame" x="317" y="0.0" width="50" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="F6M-XR-6IL"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Bg5-IP-YKu"/>
-                                        </constraints>
-                                        <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="0.0"/>
-                                    </stackView>
                                 </subviews>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Np7-LM-kTa">
@@ -232,12 +195,8 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="xWx-G5-Mq2"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomInfo" destination="w4n-4a-OTv" id="gUd-l1-Zeq"/>
                         <outlet property="collectionView" destination="ULU-nK-fPJ" id="CqK-Bu-RsH"/>
-                        <outlet property="degreesLabel" destination="Gj0-Ic-gBG" id="yoF-PY-fO6"/>
-                        <outlet property="descriptionLabel" destination="knF-IF-9Y0" id="JDf-za-iDZ"/>
                         <outlet property="toggleDisplayModeButton" destination="OyE-HB-XXp" id="aw2-v1-MiO"/>
-                        <outlet property="weatherIcon" destination="UwT-5Q-Jch" id="Rcu-G6-tJl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

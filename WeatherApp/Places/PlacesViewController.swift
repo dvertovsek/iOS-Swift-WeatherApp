@@ -15,12 +15,6 @@ class PlacesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var toggleDisplayModeButton: UIBarButtonItem!
 
-    //ListLayoutInfo
-    @IBOutlet weak var bottomInfo: UIStackView!
-    @IBOutlet weak var degreesLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var weatherIcon: UIImageView!
-
     lazy var layoutState: LayoutState = ListState(context: self)
 
     let dataManager = DataManager()
