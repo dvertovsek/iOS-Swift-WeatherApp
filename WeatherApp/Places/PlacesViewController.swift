@@ -27,7 +27,6 @@ class PlacesViewController: UIViewController {
         collectionView.collectionViewLayout = layoutState.layoutStrategy.layout
 
         places = dataManager.getMyPlaces()
-
     }
     @IBAction func addButtonPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Add a place", message: "Enter place", preferredStyle: .alert)
@@ -65,7 +64,7 @@ class PlacesViewController: UIViewController {
     }
 
     @IBAction func togglePageLayout() {
-        layoutState = PageState()
+        layoutState = PageState(context: self)
         animateLayoutChange()
     }
 
@@ -74,6 +73,7 @@ class PlacesViewController: UIViewController {
 extension PlacesViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        layoutState.handleScrollViewScrolling(with: scrollView)
     }
 
 }

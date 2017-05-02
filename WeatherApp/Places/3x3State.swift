@@ -17,7 +17,4 @@ class _3x3State: LayoutState {
     func handleCellSelection(for indexPath: IndexPath) {
     }
     
-    func handleScrollViewScrolling() {
-    }
-    
 }

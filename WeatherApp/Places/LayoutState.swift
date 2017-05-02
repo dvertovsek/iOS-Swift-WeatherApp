@@ -9,7 +9,13 @@
 import UIKit
 
 protocol LayoutState {
+
     var layoutStrategy: LayoutStrategy { get }
     func handleCellSelection(for indexPath: IndexPath)
-    func handleScrollViewScrolling()
+    func handleScrollViewScrolling(with scrollView: UIScrollView)
+
+}
+
+extension LayoutState {
+    func handleScrollViewScrolling(with scrollView: UIScrollView) {}
 }

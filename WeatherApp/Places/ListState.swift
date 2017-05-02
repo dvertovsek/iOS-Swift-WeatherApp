@@ -10,8 +10,6 @@ import UIKit
 
 class ListState: LayoutState {
 
-    let dataManager = DataManager()
-
     var context: PlacesViewController
 
     init(context: PlacesViewController) {
@@ -24,9 +22,6 @@ class ListState: LayoutState {
 
     func handleCellSelection(for indexPath: IndexPath) {
 
-    }
-
-    func handleScrollViewScrolling() {
     }
 
 }
