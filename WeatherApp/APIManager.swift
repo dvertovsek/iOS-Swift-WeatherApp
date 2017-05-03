@@ -16,7 +16,7 @@ class APIManager {
                     handler: @escaping (_ data: Data?, _ error: Error?) -> Void)
     {
         Alamofire.request(
-            "http://api.openweathermap.org/data/2.5/weather?id=\(place.id)&appid=ac5153fcd4854aab008bc02dc35f139f").responseData { response in
+            "http://api.openweathermap.org/data/2.5/weather?id=\(place.id)&appid=ac5153fcd4854aab008bc02dc35f139f&units=metric").responseData { response in
 
                 handler(response.data, response.error)
         }

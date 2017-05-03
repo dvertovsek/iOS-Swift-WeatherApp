@@ -13,7 +13,11 @@ import Marshal
 class PlacesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var toggleDisplayModeButton: UIBarButtonItem!
+
+    @IBOutlet weak var weatherInfoStackView: UIStackView!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var weatherDescriptionLabel: UILabel!
 
     lazy var layoutState: LayoutState = ListState(context: self)
 

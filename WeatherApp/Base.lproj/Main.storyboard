@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Fx-yl-WPY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Fx-yl-WPY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -146,6 +146,40 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8SL-ow-2hY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="71.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Eur-NW-CcF">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="71.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="103-1b-kpk">
+                                                <rect key="frame" x="72" y="0.0" width="44" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="44" id="JQB-7p-6X0"/>
+                                                    <constraint firstAttribute="height" constant="44" id="pOe-m3-9LY"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20˚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfA-9e-JyC">
+                                                <rect key="frame" x="73" y="44" width="41.5" height="27.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5nU-Tx-ebb">
+                                        <rect key="frame" x="187.5" y="25.5" width="187.5" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpB-NK-EhG">
+                                                <rect key="frame" x="70" y="0.0" width="48" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Np7-LM-kTa">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <constraints>
@@ -184,10 +218,14 @@
                             <constraint firstAttribute="trailing" secondItem="ctF-QA-3qY" secondAttribute="trailing" id="5Pm-EM-uoh"/>
                             <constraint firstItem="ctF-QA-3qY" firstAttribute="top" secondItem="Np7-LM-kTa" secondAttribute="bottom" id="EGa-wj-iIE"/>
                             <constraint firstItem="ctF-QA-3qY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FMI-gU-bWG"/>
+                            <constraint firstItem="8SL-ow-2hY" firstAttribute="top" secondItem="Np7-LM-kTa" secondAttribute="bottom" id="O5x-ED-aM6"/>
                             <constraint firstItem="Np7-LM-kTa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="OiA-zS-aue"/>
+                            <constraint firstItem="8SL-ow-2hY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ura-eA-NoE"/>
                             <constraint firstItem="Np7-LM-kTa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Uyz-qA-5Mx"/>
+                            <constraint firstItem="8SL-ow-2hY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="VY4-lx-s9N"/>
                             <constraint firstAttribute="trailing" secondItem="Np7-LM-kTa" secondAttribute="trailing" id="eaQ-Gq-9mA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ctF-QA-3qY" secondAttribute="bottom" id="epV-1E-E20"/>
+                            <constraint firstAttribute="trailing" secondItem="8SL-ow-2hY" secondAttribute="trailing" id="w86-FG-h1X"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Places" image="skyline" id="56d-bL-crR"/>
@@ -196,7 +234,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="ULU-nK-fPJ" id="CqK-Bu-RsH"/>
-                        <outlet property="toggleDisplayModeButton" destination="OyE-HB-XXp" id="aw2-v1-MiO"/>
+                        <outlet property="temperatureLabel" destination="WfA-9e-JyC" id="9c2-UP-FnT"/>
+                        <outlet property="weatherDescriptionLabel" destination="EpB-NK-EhG" id="oHA-7m-l5O"/>
+                        <outlet property="weatherImageView" destination="103-1b-kpk" id="aRN-v0-UKQ"/>
+                        <outlet property="weatherInfoStackView" destination="8SL-ow-2hY" id="dMB-lk-Tae"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

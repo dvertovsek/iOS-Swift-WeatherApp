@@ -17,5 +17,7 @@ protocol LayoutState {
 }
 
 extension LayoutState {
+
     func handleScrollViewScrolling(with scrollView: UIScrollView) {}
+
 }
