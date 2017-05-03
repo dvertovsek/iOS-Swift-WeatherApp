@@ -8,11 +8,18 @@
 
 import Marshal
 
-struct OWMPlace: Unmarshaling {
+struct OWMPlace {
+
     var id: Int
     var name: String
     var country: String
     var coord: Coordinate
+
+    var weather: OWMWeather?
+
+}
+
+extension OWMPlace: Unmarshaling {
 
     init(object: MarshaledObject) throws {
         id = try object.value(for: "_id")
