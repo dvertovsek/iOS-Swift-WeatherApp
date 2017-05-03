@@ -42,6 +42,11 @@ extension PageState: LayoutState {
     }
 
     func handleCellSelection(for indexPath: IndexPath) {
+        if context.weatherInfoStackView.alpha == 0.0 {
+            animateWeatherInfoShown()
+        } else {
+            animateWeatherInfoHidden()
+        }
     }
 
     func handleScrollViewScrolling(with scrollView: UIScrollView) {
