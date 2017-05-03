@@ -58,16 +58,19 @@ class PlacesViewController: UIViewController {
     }
 
     @IBAction func toggleCollectionLayout() {
+        layoutState.cleanup()
         layoutState = _3x3State()
         animateLayoutChange()
     }
 
     @IBAction func toggleListLayout() {
+        layoutState.cleanup()
         layoutState = ListState(context: self)
         animateLayoutChange()
     }
 
     @IBAction func togglePageLayout() {
+        layoutState.cleanup()
         layoutState = PageState(context: self)
         animateLayoutChange()
     }

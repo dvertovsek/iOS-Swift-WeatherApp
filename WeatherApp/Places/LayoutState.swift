@@ -13,11 +13,13 @@ protocol LayoutState {
     var layoutStrategy: LayoutStrategy { get }
     func handleCellSelection(for indexPath: IndexPath)
     func handleScrollViewScrolling(with scrollView: UIScrollView)
+    func cleanup()
 
 }
 
 extension LayoutState {
 
     func handleScrollViewScrolling(with scrollView: UIScrollView) {}
+    func cleanup() {}
 
 }

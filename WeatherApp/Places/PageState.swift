@@ -16,7 +16,6 @@ class PageState {
 
     init(context: PlacesViewController) {
         self.context = context
-
     }
 
     fileprivate func animateWeatherInfoShown() {
@@ -31,10 +30,6 @@ class PageState {
         UIView.animate(withDuration: 0.5, animations: {
             self.context.weatherInfoStackView.frame.origin.y = -self.context.weatherInfoStackView.frame.size.height
             self.context.weatherInfoStackView.alpha = 0.0
-        }, completion: { completed in
-            if (completed) {
-                self.context.weatherInfoStackView.isHidden = true
-            }
         })
     }
 
@@ -57,6 +52,11 @@ extension PageState: LayoutState {
         guard Int(scrollView.contentOffset.x) % Int(context.view.frame.width) == 0 else { return }
         dataManager.delegate = self
         dataManager.getWeather(for: context.places[pageIndex])
+    }
+
+    func cleanup() {
+        context.weatherInfoStackView.isHidden = true
+        animateWeatherInfoHidden()
     }
     
 }
