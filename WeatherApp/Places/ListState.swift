@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListState: LayoutState {
+class ListState {
 
     var context: PlacesViewController
 
@@ -16,12 +16,16 @@ class ListState: LayoutState {
         self.context = context
     }
 
+}
+
+extension ListState: LayoutState {
+
     var layoutStrategy: LayoutStrategy {
         return ListLayoutStrategy()
     }
 
     func handleCellSelection(for indexPath: IndexPath) {
-
+        context.performSegue(withIdentifier: "toWeatherDetailsSegue", sender: nil)
     }
 
 }

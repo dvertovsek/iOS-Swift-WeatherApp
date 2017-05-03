@@ -238,14 +238,113 @@
                         <outlet property="weatherDescriptionLabel" destination="EpB-NK-EhG" id="oHA-7m-l5O"/>
                         <outlet property="weatherImageView" destination="103-1b-kpk" id="aRN-v0-UKQ"/>
                         <outlet property="weatherInfoStackView" destination="8SL-ow-2hY" id="dMB-lk-Tae"/>
+                        <segue destination="7uv-10-utX" kind="showDetail" identifier="toWeatherDetailsSegue" id="Z7v-qe-cIs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-631.20000000000005" y="634.632683658171"/>
         </scene>
+        <!--Places-->
+        <scene sceneID="HBz-S0-lKQ">
+            <objects>
+                <viewController id="7uv-10-utX" customClass="WeatherDetailsViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sCZ-QO-aCP"/>
+                        <viewControllerLayoutGuide type="bottom" id="JOg-pU-XLn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dtb-MY-CiH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="Jqa-40-bGV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="a58-gj-Ahv">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MNp-ls-Sot">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jcd-Hd-Xuv">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="301.5"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NKY-3p-rFb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="151"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20˚C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baT-Cs-JVg">
+                                                        <rect key="frame" x="0.0" y="151" width="187.5" height="150.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfV-hG-Ltz">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="301.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detailed description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmy-r6-Lue">
+                                        <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UDl-tq-bcp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="9be-C2-N8H"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Weather in Zadar" id="YcW-FQ-MGc">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="DVa-RZ-wmM">
+                                            <connections>
+                                                <action selector="dismissTapped" destination="7uv-10-utX" id="JcD-Xj-4uL"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Jqa-40-bGV" firstAttribute="top" secondItem="UDl-tq-bcp" secondAttribute="bottom" id="4xE-Xb-bdh"/>
+                            <constraint firstItem="UDl-tq-bcp" firstAttribute="leading" secondItem="Dtb-MY-CiH" secondAttribute="leading" id="7xA-le-8sg"/>
+                            <constraint firstItem="a58-gj-Ahv" firstAttribute="top" secondItem="UDl-tq-bcp" secondAttribute="bottom" id="DSY-mj-VJd"/>
+                            <constraint firstItem="Jqa-40-bGV" firstAttribute="leading" secondItem="Dtb-MY-CiH" secondAttribute="leading" id="KaZ-DY-3kL"/>
+                            <constraint firstAttribute="trailing" secondItem="UDl-tq-bcp" secondAttribute="trailing" id="R8w-dq-rRH"/>
+                            <constraint firstItem="UDl-tq-bcp" firstAttribute="top" secondItem="Dtb-MY-CiH" secondAttribute="topMargin" id="XVi-AU-udr"/>
+                            <constraint firstAttribute="trailing" secondItem="Jqa-40-bGV" secondAttribute="trailing" id="ZN0-DV-dq1"/>
+                            <constraint firstItem="a58-gj-Ahv" firstAttribute="leading" secondItem="Dtb-MY-CiH" secondAttribute="leading" id="a3k-Fr-7DP"/>
+                            <constraint firstItem="JOg-pU-XLn" firstAttribute="top" secondItem="a58-gj-Ahv" secondAttribute="bottom" id="aBH-8i-jpA"/>
+                            <constraint firstAttribute="trailing" secondItem="a58-gj-Ahv" secondAttribute="trailing" id="gLx-Hc-noF"/>
+                            <constraint firstItem="JOg-pU-XLn" firstAttribute="top" secondItem="Jqa-40-bGV" secondAttribute="bottom" id="nyy-R8-MVY"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Places" image="skyline" id="cDQ-va-l90"/>
+                    <navigationItem key="navigationItem" id="zNX-vb-R0m">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hwf-UB-bQc"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="temperatureLabel" destination="baT-Cs-JVg" id="lui-nl-KiE"/>
+                        <outlet property="weatherDescriptionLabel" destination="OfV-hG-Ltz" id="80h-Yd-DD8"/>
+                        <outlet property="weatherDetailDescriptionLabel" destination="Kmy-r6-Lue" id="KsQ-eo-zSb"/>
+                        <outlet property="weatherImageView" destination="NKY-3p-rFb" id="ZvR-DO-DNM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="loL-C4-IFc" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="313" y="635"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Splash" width="167" height="167"/>
         <image name="collection" width="16" height="16"/>
         <image name="list" width="16" height="16"/>
         <image name="page" width="16" height="16"/>

@@ -59,7 +59,7 @@ class PlacesViewController: UIViewController {
 
     @IBAction func toggleCollectionLayout() {
         layoutState.cleanup()
-        layoutState = _3x3State()
+        layoutState = _3x3State(context: self)
         animateLayoutChange()
     }
 
@@ -73,6 +73,15 @@ class PlacesViewController: UIViewController {
         layoutState.cleanup()
         layoutState = PageState(context: self)
         animateLayoutChange()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "toWeatherDetailsSegue",
+            let destinationVC = segue.destination as? WeatherDetailsViewController,
+            let selectedIndex = collectionView.indexPathsForSelectedItems?.first
+        else { return }
+        destinationVC.place = places[selectedIndex.row]
     }
 
 }
@@ -124,5 +133,5 @@ extension PlacesViewController: UICollectionViewDelegate {
     {
         layoutState.handleCellSelection(for: indexPath)
     }
-
+    
 }
