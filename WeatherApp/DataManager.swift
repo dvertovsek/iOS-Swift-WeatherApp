@@ -18,6 +18,8 @@ class DataManager {
     let apiManager = APIManager()
     var delegate: DataManagerResultDelegate?
 
+    private static var _myPlaces: [OWMPlace]?
+
     func getWeather(for place: OWMPlace) {
         apiManager.getWeather(for: place) { data, error in
             if let error = error {
@@ -34,14 +36,24 @@ class DataManager {
         }
     }
 
-    func getMyPlaces() -> [OWMPlace] {
-        let allPlaces = getAllPlaces()
-        var places = [OWMPlace]()
-        places.append(allPlaces[allPlaces.index{ $0.name == "Zadar" } ?? 0])
-        return places + allPlaces[0...30]
+    func addMyPlace(place: OWMPlace) {
+        var newPlaces = [place]
+        if let _myPlaces = DataManager._myPlaces {
+            newPlaces.append(contentsOf: _myPlaces)
+        }
+        DataManager._myPlaces = newPlaces
+        saveMyPlaceToStorage(with: place.id)
     }
 
-    func getAllPlaces() -> [OWMPlace] {
+    var myPlaces: [OWMPlace] {
+        guard let _myPlaces = DataManager._myPlaces else {
+            DataManager._myPlaces = getMyPlacesFromStorage()
+            return DataManager._myPlaces!
+        }
+        return _myPlaces
+    }
+
+    var allPlaces: [OWMPlace] {
         if let path = Bundle.main.path(forResource: "city.list", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .dataReadingMapped)
@@ -53,6 +65,27 @@ class DataManager {
             }
         }
         return [OWMPlace]()
+    }
+
+    private func getMyPlacesFromStorage() -> [OWMPlace] {
+        guard
+            let placeNames = UserDefaults.standard.object(forKey: Constants.placesIDs) as? [Int]
+        else {
+            return [OWMPlace]()
+        }
+        return placeNames.map({ id in
+            allPlaces.first{ $0.id == id }!
+        })
+    }
+
+    private func saveMyPlaceToStorage(with Id: Int) {
+        var newPlaceNames = [Id]
+        if
+            let placeNamesFromStorage = UserDefaults.standard.object(forKey: Constants.placesIDs) as? [Int]
+        {
+            newPlaceNames.append(contentsOf: placeNamesFromStorage)
+        }
+        UserDefaults.standard.set(newPlaceNames, forKey: Constants.placesIDs)
     }
 
 }

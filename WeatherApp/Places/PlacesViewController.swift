@@ -29,25 +29,12 @@ class PlacesViewController: UIViewController {
         super.viewDidLoad()
 
         collectionView.collectionViewLayout = layoutState.layoutStrategy.layout
-
-        places = dataManager.getMyPlaces()
     }
-    @IBAction func addButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Add a place", message: "Enter place", preferredStyle: .alert)
 
-        //2. Add the text field. You can configure it however you need.
-        alert.addTextField { (textField) in
-            textField.placeholder = "e.g. Zadar"
-        }
-
-        // 3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            print("Text field: \(textField?.text ?? "")")
-        }))
-
-        // 4. Present the alert.
-        self.present(alert, animated: true, completion: nil)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        places = dataManager.myPlaces
+        collectionView.reloadData()
     }
 
     func animateLayoutChange() {

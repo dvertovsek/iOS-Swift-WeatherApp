@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 
         // Do any additional setup after loading the view.
 
-        let places = dataManager.getAllPlaces()
+        let places = dataManager.allPlaces
         mySearchTextField.filterStrings(places.map{ $0.name })
     }
 

@@ -12,10 +12,20 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
 
+    let dataManager = DataManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        mapView.mapType = .satelliteFlyover
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let placesSeq = PlacesSequence(places: dataManager.myPlaces)
+        for annotation in placesSeq {
+            mapView.addAnnotation(annotation)
+        }
     }
 
 }

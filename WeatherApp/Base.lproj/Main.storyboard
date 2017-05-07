@@ -163,7 +163,9 @@
                                         </leftBarButtonItems>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7QY-CS-QHS">
                                             <connections>
-                                                <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="V2d-tn-Ah0"/>
+                                                <segue destination="cOa-ux-Zh7" kind="popoverPresentation" popoverAnchorBarButtonItem="7QY-CS-QHS" id="1VU-e0-1pa">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -297,7 +299,66 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loL-C4-IFc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="313" y="635"/>
+            <point key="canvasLocation" x="444" y="1300"/>
+        </scene>
+        <!--Add Place View Controller-->
+        <scene sceneID="HrR-9V-nFN">
+            <objects>
+                <viewController id="cOa-ux-Zh7" customClass="AddPlaceViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bvH-1F-rTU"/>
+                        <viewControllerLayoutGuide type="bottom" id="WtG-T8-coF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VRp-YU-3M0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="cED-WQ-Bp0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QdY-AO-IFN" customClass="SearchTextField" customModule="SearchTextField">
+                                <rect key="frame" x="0.0" y="70" width="375" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="qIS-uT-yBG"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXk-Os-6O0">
+                                <rect key="frame" x="0.0" y="133" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.3981662326388889" green="0.71864149305555558" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xZF-Wl-bGF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Add place" image="skyline"/>
+                                <connections>
+                                    <action selector="addMyPlace" destination="cOa-ux-Zh7" eventType="touchUpInside" id="GDP-4y-sVR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.71864149305555558" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cED-WQ-Bp0" secondAttribute="trailing" id="BiB-uo-kOh"/>
+                            <constraint firstItem="vXk-Os-6O0" firstAttribute="leading" secondItem="VRp-YU-3M0" secondAttribute="leading" id="E3q-Jx-Ret"/>
+                            <constraint firstItem="cED-WQ-Bp0" firstAttribute="leading" secondItem="VRp-YU-3M0" secondAttribute="leading" id="HU0-qO-GrC"/>
+                            <constraint firstItem="cED-WQ-Bp0" firstAttribute="top" secondItem="VRp-YU-3M0" secondAttribute="top" id="Ng1-W7-d0r"/>
+                            <constraint firstItem="vXk-Os-6O0" firstAttribute="top" secondItem="QdY-AO-IFN" secondAttribute="bottom" constant="8" id="Zxu-A4-V47"/>
+                            <constraint firstAttribute="trailing" secondItem="QdY-AO-IFN" secondAttribute="trailing" id="duR-Kl-OBd"/>
+                            <constraint firstAttribute="trailing" secondItem="vXk-Os-6O0" secondAttribute="trailing" id="eJq-gJ-kdL"/>
+                            <constraint firstItem="QdY-AO-IFN" firstAttribute="top" secondItem="bvH-1F-rTU" secondAttribute="bottom" constant="50" id="iLp-U0-cgZ"/>
+                            <constraint firstItem="QdY-AO-IFN" firstAttribute="leading" secondItem="VRp-YU-3M0" secondAttribute="leading" id="sHV-OY-a7k"/>
+                            <constraint firstItem="WtG-T8-coF" firstAttribute="top" secondItem="cED-WQ-Bp0" secondAttribute="bottom" id="ulr-Z4-ZjK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myPlaceSearchTextField" destination="QdY-AO-IFN" id="4lC-jH-krL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sHk-jX-N4w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="412"/>
         </scene>
         <!--Map-->
         <scene sceneID="cID-t8-R90">
@@ -317,13 +378,7 @@
                                     <constraint firstAttribute="height" constant="64" id="pkn-wI-9YQ"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Map" id="EGS-Cl-sO5">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="r0L-LP-6ok">
-                                            <connections>
-                                                <action selector="addButtonPressed:" destination="lt1-xy-gjY" id="wz8-bh-09r"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Map" id="EGS-Cl-sO5"/>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Dvq-fD-meu">
