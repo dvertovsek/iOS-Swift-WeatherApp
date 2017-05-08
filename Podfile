@@ -8,6 +8,7 @@ target 'WeatherApp' do
   pod 'SearchTextField'
   pod 'Marshal', '~> 1.2'
   pod 'Alamofire', '~> 4.4'
+  pod 'Kingfisher', '~> 3.0'
 
   # Pods for WeatherApp
 

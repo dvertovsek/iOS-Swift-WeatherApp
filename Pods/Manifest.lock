@@ -1,18 +1,21 @@
 PODS:
   - Alamofire (4.4.0)
+  - Kingfisher (3.6.2)
   - Marshal (1.2.4)
   - SearchTextField (1.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Kingfisher (~> 3.0)
   - Marshal (~> 1.2)
   - SearchTextField
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
   Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
   SearchTextField: 5daab6cecfd90e06f9b08b2814593656c0c99f3d
 
-PODFILE CHECKSUM: e6b11c61a072742ab2a0b3e55c126a9fd4b9d187
+PODFILE CHECKSUM: 058ae962a6908d7a2df4e07ce665417b5dc88653
 
 COCOAPODS: 1.2.1

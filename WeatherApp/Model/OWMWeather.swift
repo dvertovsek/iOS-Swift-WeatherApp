@@ -36,11 +36,12 @@ struct WeatherData: Unmarshaling {
 struct WeatherDescription: Unmarshaling {
     var description: String
     var detailDescription: String
-    var iconUrl: String
+    var iconUrl: URL?
 
     init(object: MarshaledObject) throws {
         description = try object.value(for: "main")
         detailDescription = try object.value(for: "description")
-        iconUrl = try object.value(for: "icon")
+        let iconUrlString: String = try object.value(for: "icon")
+        iconUrl = URL(string: "http://openweathermap.org/img/w/\(iconUrlString).png")
     }
 }

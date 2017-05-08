@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PageState {
 
@@ -23,7 +24,7 @@ class PageState {
     fileprivate func animateWeatherInfoShown() {
         let currentPageWeather = context.places[currentPage].weather!
         context.temperatureLabel.text = String(format: "%.1f˚C", currentPageWeather.data.temp)
-        context.weatherImageView.image = #imageLiteral(resourceName: "owmicon")
+        context.weatherImageView.kf.setImage(with: currentPageWeather.description.first?.iconUrl)
         context.weatherDescriptionLabel.text = currentPageWeather.description.first?.description
         context.weatherInfoStackView.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {
