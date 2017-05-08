@@ -22,7 +22,7 @@ class DataManager {
 
     func getWeather(for place: OWMPlace)
     {
-        apiManager.prepareURL = { return "http://api.openweathermap.org/data/2.5/weather?appid=\(Constants.OWMAPIKey)&id=\(place.id)&units=metric" }
+        apiManager.prepareURL = { return "http://api.openweathermap.org/data/2.5/weather?appid=\(Constants.APIKeys.OWM)&id=\(place.id)&units=metric" }
         apiManager.getWeather() { data, error in
             if let error = error {
                 self.delegate?.didReturnError(error)

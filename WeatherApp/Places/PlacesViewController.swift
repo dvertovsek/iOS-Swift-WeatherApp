@@ -79,6 +79,10 @@ extension PlacesViewController: UIScrollViewDelegate {
         layoutState.handleScrollViewScrolling(with: scrollView)
     }
 
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        layoutState.handleScrollViewDidEndDecelerating(with: scrollView)
+    }
+
 }
 
 extension PlacesViewController: UICollectionViewDataSource {

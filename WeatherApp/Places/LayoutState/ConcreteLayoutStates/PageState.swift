@@ -9,6 +9,42 @@
 import UIKit
 import Kingfisher
 
+protocol Command {
+    func execute()
+}
+
+class HideWeatherInfoCommand: Command {
+
+    let pageState: PageState
+
+    init(_ pageState: PageState) {
+        self.pageState = pageState
+    }
+
+    func execute() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.pageState.context.weatherInfoStackView.frame.origin.y = -self.pageState.context.weatherInfoStackView.frame.size.height
+            self.pageState.context.weatherInfoStackView.alpha = 0.0
+        })
+    }
+
+}
+
+class ShowWeatherInfoCommand: Command {
+    let pageState: PageState
+
+    init(_ pageState: PageState) {
+        self.pageState = pageState
+    }
+
+    func execute() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.pageState.context.weatherInfoStackView.frame.origin.y = +self.pageState.context.weatherInfoStackView.frame.size.height
+            self.pageState.context.weatherInfoStackView.alpha = 1.0
+        })
+    }
+}
+
 class PageState {
 
     var context: PlacesViewController
@@ -16,28 +52,21 @@ class PageState {
 
     var dataManager = DataManager()
 
+    lazy var showWeatherInfoCommand: Command = ShowWeatherInfoCommand(self)
+    lazy var hideWeatherInfoCommand: Command = HideWeatherInfoCommand(self)
+
     init(context: PlacesViewController) {
         self.context = context
         dataManager.delegate = self
     }
 
-    fileprivate func animateWeatherInfoShown() {
+    fileprivate func setupWeatherInfo() {
         let currentPageWeather = context.places[currentPage].weather!
         context.temperatureLabel.text = String(format: "%.1f˚C", currentPageWeather.data.temp)
         context.weatherImageView.kf.setImage(with: currentPageWeather.description.first?.iconUrl)
         context.weatherDescriptionLabel.text = currentPageWeather.description.first?.description
         context.weatherInfoStackView.isHidden = false
-        UIView.animate(withDuration: 0.5, animations: {
-            self.context.weatherInfoStackView.frame.origin.y = +self.context.weatherInfoStackView.frame.size.height
-            self.context.weatherInfoStackView.alpha = 1.0
-        })
-    }
-
-    fileprivate func animateWeatherInfoHidden() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.context.weatherInfoStackView.frame.origin.y = -self.context.weatherInfoStackView.frame.size.height
-            self.context.weatherInfoStackView.alpha = 0.0
-        })
+        showWeatherInfoCommand.execute()
     }
 
 }
@@ -53,30 +82,30 @@ extension PageState: LayoutState {
             if context.places[currentPage].weather == nil {
                 dataManager.getWeather(for: context.places[currentPage])
             } else {
-                animateWeatherInfoShown()
+                setupWeatherInfo()
             }
         } else {
-            animateWeatherInfoHidden()
+            hideWeatherInfoCommand.execute()
         }
     }
 
     func handleScrollViewScrolling(with scrollView: UIScrollView) {
-        animateWeatherInfoHidden()
+        hideWeatherInfoCommand.execute()
         let pageIndex = Int(scrollView.contentOffset.x / context.view.frame.width)
         currentPage = pageIndex
-        guard scrollView.contentOffset.x >= 0, pageIndex < context.places.count else { return }
-        //stopped scrolling
-        guard Int(scrollView.contentOffset.x) % Int(context.view.frame.width) == 0 else { return }
+    }
+
+    func handleScrollViewDidEndDecelerating(with: UIScrollView) {
         if context.places[currentPage].weather == nil {
             dataManager.getWeather(for: context.places[currentPage])
         } else {
-            animateWeatherInfoShown()
+            setupWeatherInfo()
         }
     }
 
     func cleanup() {
         context.weatherInfoStackView.isHidden = true
-        animateWeatherInfoHidden()
+        hideWeatherInfoCommand.execute()
     }
     
 }
@@ -85,11 +114,13 @@ extension PageState: DataManagerResultDelegate {
 
     func didReturnResults(weather: OWMWeather) {
         context.places[currentPage].weather = weather
-        animateWeatherInfoShown()
+        setupWeatherInfo()
     }
 
     func didReturnError(_ error: Error) {
-
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription,
+                                      preferredStyle: .alert)
+        context.present(alert, animated: true, completion: nil)
     }
 
 }

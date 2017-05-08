@@ -16,7 +16,7 @@ class APIManager {
     var prepareParameters:  (() -> [String: Any])?
     var getUnits: (() -> String)?
 
-    static var getAPIKey = { return Constants.OWMAPIKey }
+    static var getAPIKey = { return Constants.APIKeys.OWM }
 
     var method: HTTPMethod?
 
