@@ -8,4 +8,5 @@
 
 class Constants {
     static let placesIDs = "PLACES_IDS"
+    static let OWMAPIKey = "ac5153fcd4854aab008bc02dc35f139f"
 }

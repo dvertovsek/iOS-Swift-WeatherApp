@@ -24,13 +24,13 @@ struct MapItemsIterator: IteratorProtocol {
         self.placesSeq = placesSeq
     }
 
-    mutating func next() -> MKPointAnnotation? {
+    mutating func next() -> WeatherAppPlaceAnnotation? {
         let nextPlace = placesSeq.places[index]
         index += 1
         if index >= placesSeq.places.count { return nil }
-        let annotation = MKPointAnnotation()
+        let annotation = WeatherAppPlaceAnnotation(place: nextPlace)
         annotation.coordinate = CLLocationCoordinate2D(latitude: nextPlace.coord.lat,
-                                                       longitude: nextPlace.coord.lon)
+                                                longitude: nextPlace.coord.lon)
         annotation.title = nextPlace.name
         let temp = nextPlace.weather?.data.temp ?? 0.0
         let description = nextPlace.weather?.description.first?.description ?? ""
