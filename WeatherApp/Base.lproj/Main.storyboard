@@ -61,8 +61,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="113" height="103"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zadar" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-kN-a5t">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zadar" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-kN-a5t">
                                                             <rect key="frame" x="0.0" y="0.0" width="113" height="103"/>
+                                                            <color key="backgroundColor" red="0.54290926395939088" green="0.42549957356349083" blue="0.54202444575861486" alpha="0.58427868150684936" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z42-JH-XqK">
                                                             <rect key="frame" x="8" y="26.5" width="97" height="68.5"/>

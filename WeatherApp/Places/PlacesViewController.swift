@@ -106,7 +106,7 @@ extension PlacesViewController: UICollectionViewDataSource {
                 for: indexPath) as? PlacesCollectionViewCell
         {
             let place = places[indexPath.row]
-            placesCell.placeImageView.image = #imageLiteral(resourceName: "zadar")
+            placesCell.placeImageView.image = #imageLiteral(resourceName: "skyline")
             placesCell.placeNameLabel.text = place.name
             placesCell.countryNameLabel.text = place.country
             return placesCell

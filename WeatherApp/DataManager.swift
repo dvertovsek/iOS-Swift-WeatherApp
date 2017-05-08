@@ -13,10 +13,15 @@ protocol DataManagerResultDelegate {
     func didReturnResults(weather: OWMWeather)
 }
 
+protocol FlickrPhotoResultDelegate {
+    func didGetPhoto(with url: URL?)
+}
+
 class DataManager {
 
     let apiManager = APIManager()
     var delegate: DataManagerResultDelegate?
+    var photoDelegate: FlickrPhotoResultDelegate?
 
     private static var _myPlaces: [OWMPlace]?
 
@@ -35,6 +40,18 @@ class DataManager {
                     self.delegate?.didReturnResults(weather: weather)
                 }catch{}
             }
+        }
+    }
+
+    func getPhoto(for searchText: String) {
+        apiManager.prepareURL = { return "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(Constants.APIKeys.Flickr)&format=json&nojsoncallback=1&per_page=1&text=\(searchText)" }
+        apiManager.getWeather { (data, _) in
+            do{
+            guard let data = data else { return }
+            let json = try JSONParser.JSONObjectWithData(data)
+            let flickrData = try FlickrData(with: json)
+            self.photoDelegate?.didGetPhoto(with: flickrData.meta.photosArray.first?.photoURL)
+            } catch{}
         }
     }
 

@@ -9,42 +9,6 @@
 import UIKit
 import Kingfisher
 
-protocol Command {
-    func execute()
-}
-
-class HideWeatherInfoCommand: Command {
-
-    let pageState: PageState
-
-    init(_ pageState: PageState) {
-        self.pageState = pageState
-    }
-
-    func execute() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.pageState.context.weatherInfoStackView.frame.origin.y = -self.pageState.context.weatherInfoStackView.frame.size.height
-            self.pageState.context.weatherInfoStackView.alpha = 0.0
-        })
-    }
-
-}
-
-class ShowWeatherInfoCommand: Command {
-    let pageState: PageState
-
-    init(_ pageState: PageState) {
-        self.pageState = pageState
-    }
-
-    func execute() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.pageState.context.weatherInfoStackView.frame.origin.y = +self.pageState.context.weatherInfoStackView.frame.size.height
-            self.pageState.context.weatherInfoStackView.alpha = 1.0
-        })
-    }
-}
-
 class PageState {
 
     var context: PlacesViewController
@@ -58,6 +22,7 @@ class PageState {
     init(context: PlacesViewController) {
         self.context = context
         dataManager.delegate = self
+        dataManager.photoDelegate = self
     }
 
     fileprivate func setupWeatherInfo() {
@@ -96,6 +61,7 @@ extension PageState: LayoutState {
     }
 
     func handleScrollViewDidEndDecelerating(with: UIScrollView) {
+        dataManager.getPhoto(for: context.places[currentPage].name)
         if context.places[currentPage].weather == nil {
             dataManager.getWeather(for: context.places[currentPage])
         } else {
@@ -123,4 +89,14 @@ extension PageState: DataManagerResultDelegate {
         context.present(alert, animated: true, completion: nil)
     }
 
+}
+
+extension PageState: FlickrPhotoResultDelegate {
+    func didGetPhoto(with url: URL?) {
+        guard
+            let visibleCell = context.collectionView.visibleCells.first,
+            let placesCell = visibleCell as? PlacesCollectionViewCell
+        else { return }
+        placesCell.placeImageView.kf.setImage(with: url)
+    }
 }
