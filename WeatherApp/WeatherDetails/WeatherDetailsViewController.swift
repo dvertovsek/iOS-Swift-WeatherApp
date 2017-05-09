@@ -27,7 +27,7 @@ class WeatherDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dataManager.delegate = self
+        dataManager.weatherDelegate = self
         dataManager.photoDelegate = self
 
         guard let place = place else { return }
@@ -53,13 +53,13 @@ class WeatherDetailsViewController: UIViewController {
 
 }
 
-extension WeatherDetailsViewController: DataManagerResultDelegate {
+extension WeatherDetailsViewController: OWMWeatherResultDelegate {
 
     func didReturnResults(weather: OWMWeather) {
         setupWeatherLabels(with: weather)
     }
 
-    func didReturnError(_ error: Error) {
+    func didReturnWeatherError(_ error: Error) {
         let alert = UIAlertController(title: "Error",
                                       message: error.localizedDescription,
                                       preferredStyle: .alert)
@@ -70,8 +70,21 @@ extension WeatherDetailsViewController: DataManagerResultDelegate {
 
 extension WeatherDetailsViewController: FlickrPhotoResultDelegate {
 
-    func didGetPhoto(with url: URL?) {
-        placeImageView.kf.setImage(with: url)
+    func didReturnPhotoUrl(with url: URL?) {
+        setPhoto(with: url)
+    }
+
+    func didReturnPhotoError(_ error: Error) {
+        setPhoto(with: URL.randomCityPhotoURL)
+    }
+
+    fileprivate func setPhoto(with url: URL?) {
+        placeImageView.alpha = 0.0
+        placeImageView.kf.setImage(with: url, completionHandler: { _, _, _, _ in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.placeImageView.alpha = 1.0
+            })
+        })
     }
 
 }

@@ -20,7 +20,7 @@ class MapViewController: UIViewController {
 
         mapView.mapType = .hybridFlyover
         mapView.delegate = self
-        dataManager.delegate = self
+        dataManager.weatherDelegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +45,7 @@ extension MapViewController: MKMapViewDelegate {
 
 }
 
-extension MapViewController: DataManagerResultDelegate {
+extension MapViewController: OWMWeatherResultDelegate {
 
     func didReturnResults(weather: OWMWeather) {
         let temp = "\(weather.data.temp)˚C, "
@@ -53,7 +53,7 @@ extension MapViewController: DataManagerResultDelegate {
         selectedAnnotation?.subtitle = temp + desc
     }
 
-    func didReturnError(_ error: Error) {
+    func didReturnWeatherError(_ error: Error) {
         selectedAnnotation?.subtitle = error.localizedDescription
     }
     

@@ -21,7 +21,7 @@ class PageState {
 
     init(context: PlacesViewController) {
         self.context = context
-        dataManager.delegate = self
+        dataManager.weatherDelegate = self
         dataManager.photoDelegate = self
     }
 
@@ -77,14 +77,14 @@ extension PageState: LayoutState {
     
 }
 
-extension PageState: DataManagerResultDelegate {
+extension PageState: OWMWeatherResultDelegate {
 
     func didReturnResults(weather: OWMWeather) {
         context.places[currentPage].weather = weather
         setupWeatherInfo()
     }
 
-    func didReturnError(_ error: Error) {
+    func didReturnWeatherError(_ error: Error) {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription,
                                       preferredStyle: .alert)
         context.present(alert, animated: true, completion: nil)
@@ -93,17 +93,26 @@ extension PageState: DataManagerResultDelegate {
 }
 
 extension PageState: FlickrPhotoResultDelegate {
-    func didGetPhoto(with url: URL?) {
+
+    func didReturnPhotoUrl(with url: URL?) {
+        setPhoto(with: url)
+    }
+
+    func didReturnPhotoError(_ error: Error) {
+        setPhoto(with: URL.randomCityPhotoURL)
+    }
+
+    fileprivate func setPhoto(with url: URL?) {
         guard
             let visibleCell = context.collectionView.visibleCells.first,
             let placesCell = visibleCell as? PlacesCollectionViewCell
-        else { return }
+            else { return }
         placesCell.placeImageView.alpha = 0.0
-        let urlToUse = url?.absoluteString.isEmpty == true ? URL(string: "https://lorempixel.com/400/600/city")! : url
-        placesCell.placeImageView.kf.setImage(with: urlToUse, completionHandler: { _, _, _, _ in
+        placesCell.placeImageView.kf.setImage(with: url, completionHandler: { _, _, _, _ in
             UIView.animate(withDuration: 0.5, animations: {
                 placesCell.placeImageView.alpha = 1.0
             })
         })
     }
+
 }

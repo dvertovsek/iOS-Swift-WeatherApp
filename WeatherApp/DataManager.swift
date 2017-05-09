@@ -8,19 +8,20 @@
 
 import Marshal
 
-protocol DataManagerResultDelegate {
-    func didReturnError(_ error: Error)
+protocol OWMWeatherResultDelegate {
     func didReturnResults(weather: OWMWeather)
+    func didReturnWeatherError(_ error: Error)
 }
 
 protocol FlickrPhotoResultDelegate {
-    func didGetPhoto(with url: URL?)
+    func didReturnPhotoUrl(with url: URL?)
+    func didReturnPhotoError(_ error: Error)
 }
 
 class DataManager {
 
     let apiManager = APIManager()
-    var delegate: DataManagerResultDelegate?
+    var weatherDelegate: OWMWeatherResultDelegate?
     var photoDelegate: FlickrPhotoResultDelegate?
 
     private static var _myPlaces: [OWMPlace]?
@@ -30,14 +31,14 @@ class DataManager {
         apiManager.prepareURL = { return "http://api.openweathermap.org/data/2.5/weather?appid=\(Constants.APIKeys.OWM)&id=\(place.id)&units=metric" }
         apiManager.getWeather() { data, error in
             if let error = error {
-                self.delegate?.didReturnError(error)
+                self.weatherDelegate?.didReturnWeatherError(error)
             } else if
                 let data = data
             {
                 do{
                     let json = try JSONParser.JSONObjectWithData(data)
                     let weather: OWMWeather = try OWMWeather(with: json)
-                    self.delegate?.didReturnResults(weather: weather)
+                    self.weatherDelegate?.didReturnResults(weather: weather)
                 }catch{}
             }
         }
@@ -45,12 +46,15 @@ class DataManager {
 
     func getPhoto(for searchText: String) {
         apiManager.prepareURL = { return "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(Constants.APIKeys.Flickr)&format=json&nojsoncallback=1&per_page=1&text=\(searchText)" }
-        apiManager.getWeather { (data, _) in
+        apiManager.getWeather { (data, error) in
+            if let error = error {
+                self.photoDelegate?.didReturnPhotoError(error)
+            }
             do{
-            guard let data = data else { return }
-            let json = try JSONParser.JSONObjectWithData(data)
-            let flickrData = try FlickrData(with: json)
-            self.photoDelegate?.didGetPhoto(with: flickrData.meta.photosArray.first?.photoURL)
+                guard let data = data else { return }
+                let json = try JSONParser.JSONObjectWithData(data)
+                let flickrData = try FlickrData(with: json)
+                self.photoDelegate?.didReturnPhotoUrl(with: flickrData.meta.photosArray.first?.photoURL)
             } catch{}
         }
     }
@@ -89,8 +93,8 @@ class DataManager {
     private func getMyPlacesFromStorage() -> [OWMPlace] {
         guard
             let placeNames = UserDefaults.standard.object(forKey: Constants.placesIDs) as? [Int]
-        else {
-            return [OWMPlace]()
+            else {
+                return [OWMPlace]()
         }
         return placeNames.map({ id in
             allPlaces.first{ $0.id == id }!
@@ -106,5 +110,5 @@ class DataManager {
         }
         UserDefaults.standard.set(newPlaceNames, forKey: Constants.placesIDs)
     }
-
+    
 }
