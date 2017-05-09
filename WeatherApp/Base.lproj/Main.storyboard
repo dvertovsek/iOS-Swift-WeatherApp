@@ -217,6 +217,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skyline" translatesAutoresizingMaskIntoConstraints="NO" id="Orj-SI-ync">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="Jqa-40-bGV">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
@@ -229,29 +232,29 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jcd-Hd-Xuv">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="301.5"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NKY-3p-rFb">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="owmicon" translatesAutoresizingMaskIntoConstraints="NO" id="NKY-3p-rFb">
                                                         <rect key="frame" x="0.0" y="0.0" width="187.5" height="151"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20˚C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baT-Cs-JVg">
                                                         <rect key="frame" x="0.0" y="151" width="187.5" height="150.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfV-hG-Ltz">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="301.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="33"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detailed description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmy-r6-Lue">
                                         <rect key="frame" x="0.0" y="301.5" width="375" height="301.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -272,17 +275,21 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.038838685219987699" green="0.017943528144354175" blue="0.079513007614213205" alpha="0.77215325342465757" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Jqa-40-bGV" firstAttribute="top" secondItem="UDl-tq-bcp" secondAttribute="bottom" id="4xE-Xb-bdh"/>
                             <constraint firstItem="UDl-tq-bcp" firstAttribute="leading" secondItem="Dtb-MY-CiH" secondAttribute="leading" id="7xA-le-8sg"/>
+                            <constraint firstItem="Orj-SI-ync" firstAttribute="leading" secondItem="Dtb-MY-CiH" secondAttribute="leading" id="Bah-yu-8WF"/>
                             <constraint firstItem="a58-gj-Ahv" firstAttribute="top" secondItem="UDl-tq-bcp" secondAttribute="bottom" id="DSY-mj-VJd"/>
                             <constraint firstItem="Jqa-40-bGV" firstAttribute="leading" secondItem="Dtb-MY-CiH" secondAttribute="leading" id="KaZ-DY-3kL"/>
                             <constraint firstAttribute="trailing" secondItem="UDl-tq-bcp" secondAttribute="trailing" id="R8w-dq-rRH"/>
+                            <constraint firstAttribute="trailing" secondItem="Orj-SI-ync" secondAttribute="trailing" id="Ugf-ef-T3s"/>
+                            <constraint firstItem="Orj-SI-ync" firstAttribute="height" secondItem="Jqa-40-bGV" secondAttribute="height" id="Ww5-wE-KBN"/>
                             <constraint firstItem="UDl-tq-bcp" firstAttribute="top" secondItem="Dtb-MY-CiH" secondAttribute="topMargin" id="XVi-AU-udr"/>
                             <constraint firstAttribute="trailing" secondItem="Jqa-40-bGV" secondAttribute="trailing" id="ZN0-DV-dq1"/>
                             <constraint firstItem="a58-gj-Ahv" firstAttribute="leading" secondItem="Dtb-MY-CiH" secondAttribute="leading" id="a3k-Fr-7DP"/>
                             <constraint firstItem="JOg-pU-XLn" firstAttribute="top" secondItem="a58-gj-Ahv" secondAttribute="bottom" id="aBH-8i-jpA"/>
+                            <constraint firstItem="Orj-SI-ync" firstAttribute="top" secondItem="UDl-tq-bcp" secondAttribute="bottom" id="bh1-fe-rQz"/>
                             <constraint firstAttribute="trailing" secondItem="a58-gj-Ahv" secondAttribute="trailing" id="gLx-Hc-noF"/>
                             <constraint firstItem="JOg-pU-XLn" firstAttribute="top" secondItem="Jqa-40-bGV" secondAttribute="bottom" id="nyy-R8-MVY"/>
                         </constraints>
@@ -292,6 +299,8 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="hwf-UB-bQc"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="navBar" destination="UDl-tq-bcp" id="lQt-UO-Fhn"/>
+                        <outlet property="placeImageView" destination="Orj-SI-ync" id="eLr-qA-wg3"/>
                         <outlet property="temperatureLabel" destination="baT-Cs-JVg" id="lui-nl-KiE"/>
                         <outlet property="weatherDescriptionLabel" destination="OfV-hG-Ltz" id="80h-Yd-DD8"/>
                         <outlet property="weatherDetailDescriptionLabel" destination="Kmy-r6-Lue" id="KsQ-eo-zSb"/>
@@ -415,6 +424,7 @@
         <image name="collection" width="16" height="16"/>
         <image name="list" width="16" height="16"/>
         <image name="map" width="16" height="16"/>
+        <image name="owmicon" width="50" height="50"/>
         <image name="page" width="16" height="16"/>
         <image name="skyline" width="16" height="16"/>
     </resources>
