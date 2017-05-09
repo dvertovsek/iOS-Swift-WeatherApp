@@ -61,6 +61,7 @@ extension PageState: LayoutState {
     }
 
     func handleScrollViewDidEndDecelerating(with: UIScrollView) {
+
         dataManager.getPhoto(for: context.places[currentPage].name)
         if context.places[currentPage].weather == nil {
             dataManager.getWeather(for: context.places[currentPage])
@@ -97,6 +98,12 @@ extension PageState: FlickrPhotoResultDelegate {
             let visibleCell = context.collectionView.visibleCells.first,
             let placesCell = visibleCell as? PlacesCollectionViewCell
         else { return }
-        placesCell.placeImageView.kf.setImage(with: url)
+        placesCell.placeImageView.alpha = 0.0
+        let urlToUse = url?.absoluteString.isEmpty == true ? URL(string: "https://lorempixel.com/400/600/city")! : url
+        placesCell.placeImageView.kf.setImage(with: urlToUse, completionHandler: { _, _, _, _ in
+            UIView.animate(withDuration: 0.5, animations: {
+                placesCell.placeImageView.alpha = 1.0
+            })
+        })
     }
 }

@@ -11,6 +11,6 @@ class Constants {
 
     struct APIKeys{
         static let OWM = "ac5153fcd4854aab008bc02dc35f139f"
-        static let Flickr = "a5c010de42f3427ab82af93f23de100f"
+        static let Flickr = "064355a363bba2b727c75f2c59af2680"
     }
 }

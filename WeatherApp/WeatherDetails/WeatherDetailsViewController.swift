@@ -25,7 +25,11 @@ class WeatherDetailsViewController: UIViewController {
     }
 
     func setupWeatherLabels() {
-//        temperatureLabel.text = 
+        guard let place = place else { return }
+        temperatureLabel.text = "\(place.weather?.data.temp ?? 0.0)"
+        weatherImageView.kf.setImage(with: place.weather?.description.first?.iconUrl)
+        weatherDescriptionLabel.text = place.weather?.description.first?.description
+        weatherDetailDescriptionLabel.text = place.weather?.description.first?.detailDescription
     }
 
     @IBAction func dismissTapped() {

@@ -61,9 +61,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="113" height="103"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zadar" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-kN-a5t">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skyline" translatesAutoresizingMaskIntoConstraints="NO" id="jAc-kN-a5t">
                                                             <rect key="frame" x="0.0" y="0.0" width="113" height="103"/>
-                                                            <color key="backgroundColor" red="0.54290926395939088" green="0.42549957356349083" blue="0.54202444575861486" alpha="0.58427868150684936" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z42-JH-XqK">
                                                             <rect key="frame" x="8" y="26.5" width="97" height="68.5"/>
@@ -86,6 +85,7 @@
                                                         </stackView>
                                                     </subviews>
                                                 </view>
+                                                <color key="backgroundColor" red="0.018417000328361799" green="0.012501876719586601" blue="0.021633090101522812" alpha="0.7849957191780822" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="Z42-JH-XqK" firstAttribute="leading" secondItem="4M6-dx-dJ9" secondAttribute="leading" constant="8" identifier="stackViewLeading" id="0j8-2l-yNh"/>
                                                     <constraint firstAttribute="bottom" secondItem="jAc-kN-a5t" secondAttribute="bottom" id="20o-PS-9xV"/>
@@ -132,8 +132,8 @@
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpB-NK-EhG">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="88"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -417,6 +417,5 @@
         <image name="map" width="16" height="16"/>
         <image name="page" width="16" height="16"/>
         <image name="skyline" width="16" height="16"/>
-        <image name="zadar" width="1920" height="900"/>
     </resources>
 </document>
