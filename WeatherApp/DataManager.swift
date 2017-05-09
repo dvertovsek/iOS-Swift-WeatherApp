@@ -60,7 +60,10 @@ class DataManager {
                 "format": "json",
                 "nojsoncallback": 1,
                 "per_page": 1,
-                "text": searchText
+                "text": searchText,
+                "media": "photos",
+                "content-type": 1,
+                "tags": "city"
             ]
         }
         apiManager.getWeather { (data, error) in
