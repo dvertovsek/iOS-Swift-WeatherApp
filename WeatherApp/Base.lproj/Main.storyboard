@@ -23,6 +23,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Zqh-Zk-dpn"/>
                         <segue destination="lt1-xy-gjY" kind="relationship" relationship="viewControllers" id="dmb-ho-AYs"/>
+                        <segue destination="ft8-Mr-vGL" kind="relationship" relationship="viewControllers" id="PaM-6F-B17"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgr-vt-02f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -325,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loL-C4-IFc" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="444" y="1300"/>
+            <point key="canvasLocation" x="1391" y="287"/>
         </scene>
         <!--Add Place View Controller-->
         <scene sceneID="HrR-9V-nFN">
@@ -404,7 +405,9 @@
                                     <constraint firstAttribute="height" constant="64" id="pkn-wI-9YQ"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Map" id="EGS-Cl-sO5"/>
+                                    <navigationItem title="Map" id="EGS-Cl-sO5">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zCT-d0-ZH5"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Dvq-fD-meu">
@@ -434,10 +437,126 @@
             </objects>
             <point key="canvasLocation" x="-690" y="-52"/>
         </scene>
+        <!--Forecast-->
+        <scene sceneID="NvM-ve-UFg">
+            <objects>
+                <viewController id="ft8-Mr-vGL" userLabel="Forecast" customClass="ForecastViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V8A-oq-ixZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="iLP-rX-p2c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BxV-Gs-ORQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="A6y-tp-oJ0">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-4u-JMu">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HJk-RM-dUU">
+                                            <size key="itemSize" width="353" height="103"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlacesCollectionViewCell" id="T4S-Ok-fk1" customClass="PlacesCollectionViewCell" customModule="WeatherApp" customModuleProvider="target">
+                                                <rect key="frame" x="11" y="0.0" width="353" height="103"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="353" height="103"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skyline" translatesAutoresizingMaskIntoConstraints="NO" id="qQg-dx-r36">
+                                                            <rect key="frame" x="0.0" y="0.0" width="353" height="103"/>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rag-a1-AUF">
+                                                            <rect key="frame" x="8" y="80.5" width="337" height="14.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Zadar Zadar Zadar Zadar Zadar" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAF-lp-7fZ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="337" height="0.0"/>
+                                                                    <color key="backgroundColor" red="1" green="0.47058823529999999" blue="1" alpha="0.44121896399999999" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Croatia" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0a-DY-DSI">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="337" height="14.5"/>
+                                                                    <color key="backgroundColor" red="1" green="0.47040473090000001" blue="1" alpha="0.44121896399999999" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </view>
+                                                <color key="backgroundColor" red="0.018417000329999999" green="0.012501876719999999" blue="0.021633090099999999" alpha="0.7849957192" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="Rag-a1-AUF" secondAttribute="trailing" constant="8" identifier="stackViewTrailing" id="BjZ-Ho-zp6"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Rag-a1-AUF" secondAttribute="bottom" constant="8" identifier="stackViewBottom" id="NjJ-7P-yti"/>
+                                                    <constraint firstItem="Rag-a1-AUF" firstAttribute="leading" secondItem="T4S-Ok-fk1" secondAttribute="leading" constant="8" identifier="stackViewLeading" id="XB2-GW-5ze"/>
+                                                    <constraint firstAttribute="trailing" secondItem="qQg-dx-r36" secondAttribute="trailing" id="Zx9-4l-8ol"/>
+                                                    <constraint firstItem="qQg-dx-r36" firstAttribute="leading" secondItem="T4S-Ok-fk1" secondAttribute="leading" id="cxr-oy-Gl9"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qQg-dx-r36" secondAttribute="bottom" id="liv-pu-RTd"/>
+                                                    <constraint firstItem="qQg-dx-r36" firstAttribute="top" secondItem="T4S-Ok-fk1" secondAttribute="top" id="s8b-7s-qop"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="countryNameLabel" destination="z0a-DY-DSI" id="69y-2o-XHr"/>
+                                                    <outlet property="placeImageView" destination="qQg-dx-r36" id="7Lb-zz-geB"/>
+                                                    <outlet property="placeNameLabel" destination="nAF-lp-7fZ" id="rgS-I1-BBP"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="ft8-Mr-vGL" id="8HQ-aU-qE1"/>
+                                            <outlet property="delegate" destination="ft8-Mr-vGL" id="0F3-JF-V1X"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdY-mr-zyz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Dcx-YP-ldO"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Forecasts" id="zq7-Kf-Uim">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7ri-Wq-u7X"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="A6y-tp-oJ0" firstAttribute="top" secondItem="mdY-mr-zyz" secondAttribute="bottom" id="BXK-Z4-fOb"/>
+                            <constraint firstItem="mdY-mr-zyz" firstAttribute="leading" secondItem="BxV-Gs-ORQ" secondAttribute="leading" id="QE0-AT-wYn"/>
+                            <constraint firstItem="mdY-mr-zyz" firstAttribute="top" secondItem="BxV-Gs-ORQ" secondAttribute="topMargin" id="UqH-ue-Ask"/>
+                            <constraint firstItem="A6y-tp-oJ0" firstAttribute="leading" secondItem="BxV-Gs-ORQ" secondAttribute="leading" id="YEJ-jA-HBw"/>
+                            <constraint firstItem="iLP-rX-p2c" firstAttribute="top" secondItem="A6y-tp-oJ0" secondAttribute="bottom" id="fet-Ei-yAH"/>
+                            <constraint firstAttribute="trailing" secondItem="A6y-tp-oJ0" secondAttribute="trailing" id="nFe-V4-jx7"/>
+                            <constraint firstAttribute="trailing" secondItem="mdY-mr-zyz" secondAttribute="trailing" id="nep-eY-jD5"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Forecast" image="forecast" id="TwW-o6-4G5"/>
+                    <navigationItem key="navigationItem" id="apn-gV-u1z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iNe-P1-kLP"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="CfA-4u-JMu" id="srk-Go-ESo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ed6-y3-ac2" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1492" y="1007.9460269865068"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Splash" width="167" height="167"/>
         <image name="collection" width="16" height="16"/>
+        <image name="forecast" width="16" height="16"/>
         <image name="list" width="16" height="16"/>
         <image name="map" width="16" height="16"/>
         <image name="owmicon" width="50" height="50"/>
