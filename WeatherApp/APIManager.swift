@@ -16,20 +16,21 @@ class APIManager {
     var prepareParameters:  (() -> [String: Any])?
     var getUnits: (() -> String)?
 
-    static var getAPIKey = { return Constants.APIKeys.OWM }
-
-    var method: HTTPMethod?
+    var method: HTTPMethod = .get
 
     func getWeather(handler: @escaping (_ data: Data?, _ error: Error?) -> Void)
     {
-        let url = prepareURL?() ?? ""
+        var url = prepareURL?() ?? ""
         let headers = prepareHeaders?() ?? { return [:] }()
-        var parameters = prepareParameters?() ?? { return [:] }()
-        parameters["appid"] = APIManager.getAPIKey()
-        parameters["units"] = getUnits?() ?? { return "metric" }
+        let parameters = prepareParameters?() ?? { return [:] }()
+        if method == .get {
+            url += "?"
+            parameters.forEach{ url += $0.0+"=\($0.1)&" }
+        }
+        print("calling: ", url)
         Alamofire.request(
             url,
-            method: method ?? .get,
+            method: method,
             parameters: parameters,
             headers: headers).responseData
             { response in

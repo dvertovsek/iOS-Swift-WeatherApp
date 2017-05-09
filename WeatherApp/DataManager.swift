@@ -28,7 +28,14 @@ class DataManager {
 
     func getWeather(for place: OWMPlace)
     {
-        apiManager.prepareURL = { return "http://api.openweathermap.org/data/2.5/weather?appid=\(Constants.APIKeys.OWM)&id=\(place.id)&units=metric" }
+        apiManager.prepareURL = { return "http://api.openweathermap.org/data/2.5/weather" }
+        apiManager.prepareParameters = {
+            return [
+                "appid": Constants.APIKeys.OWM,
+                "id": place.id,
+                "units": "metric"
+            ]
+        }
         apiManager.getWeather() { data, error in
             if let error = error {
                 self.weatherDelegate?.didReturnWeatherError(error)
@@ -45,7 +52,17 @@ class DataManager {
     }
 
     func getPhoto(for searchText: String) {
-        apiManager.prepareURL = { return "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(Constants.APIKeys.Flickr)&format=json&nojsoncallback=1&per_page=1&text=\(searchText)" }
+        apiManager.prepareURL = { return "https://api.flickr.com/services/rest/" }
+        apiManager.prepareParameters = {
+            return [
+                "method": "flickr.photos.search",
+                "api_key": Constants.APIKeys.Flickr,
+                "format": "json",
+                "nojsoncallback": 1,
+                "per_page": 1,
+                "text": searchText
+            ]
+        }
         apiManager.getWeather { (data, error) in
             if let error = error {
                 self.photoDelegate?.didReturnPhotoError(error)
