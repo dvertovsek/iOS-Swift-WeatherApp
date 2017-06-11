@@ -23,7 +23,6 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Zqh-Zk-dpn"/>
                         <segue destination="lt1-xy-gjY" kind="relationship" relationship="viewControllers" id="dmb-ho-AYs"/>
-                        <segue destination="ft8-Mr-vGL" kind="relationship" relationship="viewControllers" id="PaM-6F-B17"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgr-vt-02f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -450,10 +449,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="A6y-tp-oJ0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-4u-JMu">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HJk-RM-dUU">
                                             <size key="itemSize" width="353" height="103"/>
@@ -473,17 +472,17 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="103"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rag-a1-AUF">
-                                                            <rect key="frame" x="8" y="80.5" width="337" height="14.5"/>
+                                                            <rect key="frame" x="8" y="62.5" width="337" height="32.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Zadar Zadar Zadar Zadar Zadar" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAF-lp-7fZ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="337" height="0.0"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="337" height="18"/>
                                                                     <color key="backgroundColor" red="1" green="0.47058823529999999" blue="1" alpha="0.44121896399999999" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Croatia" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0a-DY-DSI">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="337" height="14.5"/>
+                                                                    <rect key="frame" x="0.0" y="18" width="337" height="14.5"/>
                                                                     <color key="backgroundColor" red="1" green="0.47040473090000001" blue="1" alpha="0.44121896399999999" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
